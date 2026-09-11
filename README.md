@@ -40,9 +40,9 @@
 | 平台 | 地址 | 说明 |
 |---|---|---|
 | **Gitee**（镜像） | <https://gitee.com/kira905/ops-handoff-design> | 国内直连可读，无需梯子 |
-| **GitHub**（主） | <https://github.com/kira905-cloud/ops-handoff-design> | 国际主入口；账号名后续会统一为 `kira905`（届时旧地址自动重定向） |
+| **GitHub**（主） | <https://github.com/kira905/ops-handoff-design> | 国际主入口（两端账号名已统一为 `kira905`） |
 
-当前版本：`main @ v1.1`。历史 tag 见各平台 tags 页。
+当前版本：见各平台 tags 页（最新 tag 与本文档头部标注一致）。
 
 ## 仓库拓扑与组件（后续会陆续开源）
 
