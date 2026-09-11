@@ -50,11 +50,12 @@ Ordinary web-service operations advice does not transfer cleanly here: the failu
 
 This repository holds the **methodology only**. Implementations ship as **one repository per component**:
 
+Both platforms host them under the same account name (`kira905`):
+
 ```
-kira905/
-├── ops-handoff-design    [docs]       ← this repo: the authoritative narrative
-├── dsh-<component>       [component]  ← one repo each; its README links back to the
-└── ...                                   specific sections here that justify its design
+ops-handoff-design     [docs]       ← this repo: the authoritative narrative
+dsh-<component>        [component]  ← one repo each; its README links back to the
+...                                    specific sections here that justify its design
 ```
 
 Reasons: the licensing is deliberately split (**docs CC BY-NC-SA 4.0 so they cannot be commercially repackaged; code MIT to keep the barrier low**), components then version and release independently, and third-party issues have an unambiguous home.
