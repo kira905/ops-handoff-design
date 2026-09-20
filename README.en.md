@@ -41,7 +41,7 @@ This is probably relevant to you if:
 
 3. **If you want criteria you can copy** — `03` §4 R6 gives six service-side criteria, each with **threshold / authoritative source / how to verify / where the trace is recorded**. The design stance behind that layout: *a criterion is not a criterion until it can be checked.*
 
-4. **Every document ends with two sections that decide how much to trust it**:
+4. **Documents `01`–`03` end with two sections that decide how much to trust them**:
    - *Review records* — how many reviewers, how many issues found, **where each landed** (including the explicit statement that one review round does not certify the next);
    - *Assumptions & validation timing* — what is **still unverified**, when it will be tested, and **what the fallback is if it fails**.
    - A design document without these two sections should be read as "the author's current impression".
