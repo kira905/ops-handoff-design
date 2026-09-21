@@ -72,7 +72,7 @@ This is probably relevant to you if:
 | **GitHub** (primary) | <https://github.com/kira905/ops-handoff-design> | International entry point |
 | **Gitee** (mirror) | <https://gitee.com/kira905/ops-handoff-design> | Directly reachable from mainland China |
 
-Current version: **v1.8** (tag sequence `v1.0` → … → `v1.7` → `v1.8`; `v1.8` = commit `8233ef4`). The `v1.9` addition — documents `07` and `08` — is already committed locally and is **not tagged yet**. The per-version changelog is maintained in the [Chinese README](README.md).
+Current version: **v1.9** (tag sequence `v1.0` → … → `v1.8` → `v1.9`; `v1.8` = commit `8233ef4`, `v1.9` = the commit shown on either platform's tags page). The `v1.9` addition — documents `07` and `08` — is **published on both Gitee and GitHub**. The per-version changelog is maintained in the [Chinese README](README.md).
 
 > **On the v1.6 file rename**: the three documents dropped the word "design" from their titles in this version. If you hold a link to an older filename, tag `v1.5` still contains the same content under the old name.
 
