@@ -2,7 +2,7 @@
 
 > **中文版** → [README.md](README.md)
 
-**This repository is the design record of an operations system built for running coding agents on your own machines over weeks and months.** Five documents answer five questions: **how multiple workstations hand state off to each other without losing anything**, **what autonomy capabilities a single-machine environment actually needs**, **what a full "cast of roles + house rules" discipline looks like**, **how a wrong performance attribution got overturned by its own re-measurement**, and **how a design document should be reviewed before work starts**.
+**This repository is the design record of an operations system built for running coding agents on your own machines over weeks and months.** Six documents answer six questions: **how multiple workstations hand state off to each other without losing anything**, **what autonomy capabilities a single-machine environment actually needs**, **what a full "cast of roles + house rules" discipline looks like**, **how a wrong performance attribution got overturned by its own re-measurement**, and **how a design document should be reviewed before work starts**, and **what a read-only monitoring panel should answer — and what it must never do**.
 
 They are not "how our system looks". They are **what breaks, how to judge it, and how to roll it back** — every conclusion comes from a real incident or a measured run, and **the claims that measurement later disproved are kept in the text, not quietly deleted** (`05` is that whole process, start to finish).
 
@@ -28,7 +28,8 @@ This is probably relevant to you if:
 | [`02-自治式运维管家.md`](02-自治式运维管家.md) | **Autonomous operations steward** (**a 2026-09-11 snapshot**): a "constitution" (three object types + autonomy spectrum S0–S5), write gatekeeper, restart gatekeeper, proactive alerting, pitfall auto-learning, external-signal sensing, cross-carrier reconciliation — 9 capability domains | ~1100 lines + 15 unverified assumptions |
 | [`03-体系全景与家规.md`](03-体系全景与家规.md) | **The current big picture (newest in this repo).** One cast, two faces, two sets of criteria; five-layer architecture; **eight house rules** (bare-run period / shadow view / locked delivery / four-level circuit breaker / rollback + drills / service-side criteria / ledger arbitration / cross-lane contract); a table untangling the **four different "L-number" schemes**; measured hard constraints (crash chain / auth-gate conflict / capacity and locking); roadmap and gap ledger | ~500 lines |
 | [`04-设计稿审核规程.md`](04-设计稿审核规程.md) | **How to review a design document before starting work.** A full review = **five rounds** (engineering contract / implementer's view / runtime failure / four cross-cutting tables + five rings / premise verification) + a **post-implementation conformance gate**. Includes a round-selection matrix, three evidence-gathering steps, the five rings with their breakage patterns, nine anti-patterns, a minimal version and a one-page cheat sheet (Chinese) | ~300 lines |
-| [`05-一次错误的性能归因.md`](05-一次错误的性能归因.md) | **A wrong performance attribution, and what the re-measurement said** (measured run). Chasing "everything gets sluggish once several sessions run in parallel": the first version blamed the CPU saturation on full cache rewrites, and the re-measurement (9.7 ms per serialization ≈ 0.8 % of one core) overturned it on the spot. What actually tracks CPU is **how many sessions are running**. Includes the honest ledger of "the fix was real, but it did not fix the original problem", four reusable pitfalls and six lessons (Chinese) | ~260 lines |
+| [`05-一次错误的性能归因.md`](05-一次错误的性能归因.md) | **A wrong performance attribution, and what the re-measurement said** (measured run). Chasing "everything gets sluggish once several sessions run in parallel": the first version blamed the CPU saturation on full cache rewrites, and the re-measurement (9.7 ms per serialization ≈ 0.8 % of one core) overturned it on the spot. What actually tracks CPU is **how many sessions are running**. Includes the honest ledger of "the fix was real, but it did not fix the original problem", four reusable pitfalls and six lessons (Chinese) |
+| [`06-只读监控面板的设计纪律.md`](06-只读监控面板的设计纪律.md) | **Design discipline for a read-only monitoring panel** (Chinese). What a panel for long-lived agents should actually answer (not "is the service up" but "how is today going, and what broke silently"); what one page load really costs (of a measured 134 KB response, **56 % was a field the first screen never used**; sharding + in-process TTL cache + single-flight + a timeout budget); and three lines that must not be crossed (**if you cannot probe it, show "not probeable + why"** — never `0`, never a false green; render only, never recompute; a panel must have no side effects). Includes three real "silent failure" lessons, where the ceiling on making such a panel generic lies, and an honest list of what to cut | ~380 lines | ~260 lines |
 | [`发布说明.md`](发布说明.md) | **Release notes.** Repo topology, licensing, versioning, component index, open-sourcing admission criteria (Chinese only) | — |
 
 ---
@@ -54,6 +55,8 @@ This is probably relevant to you if:
 
 8. **`02` and `03` are two different documents, not two drafts of one**: `02` is a **design snapshot** (how the thing was thought through, including assumptions that were still unverified); `03` is the **current big picture** (what it looks like now, and why it is trusted to act). Neither replaces the other.
 
+9. **If you want to build a read-only panel for your own agent** — read `06`. It covers the display discipline (**unreadable means "unknown": never a `0`, never a green**), what one page load costs and how to shard it, why a panel must **render only and never recompute** (one authoritative source per fact), and where the ceiling on "making the panel generic" actually sits. Like `04` and `05`, it does not carry the review-records / assumptions sections: it is a discipline, not a design under review.
+
 ---
 
 ## Published at
@@ -63,7 +66,7 @@ This is probably relevant to you if:
 | **GitHub** (primary) | <https://github.com/kira905/ops-handoff-design> | International entry point |
 | **Gitee** (mirror) | <https://gitee.com/kira905/ops-handoff-design> | Directly reachable from mainland China |
 
-Current version: **v1.6** (tag sequence `v1.0` → … → `v1.5` → `v1.6`). The `v1.7` additions — the `04` and `05` documents — are already committed locally and are **not tagged yet**. The per-version changelog is maintained in the [Chinese README](README.md).
+Current version: **v1.7** (tag sequence `v1.0` → … → `v1.6` → `v1.7`). The `v1.8` addition — the `06` document — is already committed locally and is **not tagged yet**. The per-version changelog is maintained in the [Chinese README](README.md).
 
 > **On the v1.6 file rename**: the three documents dropped the word "design" from their titles in this version. If you hold a link to an older filename, tag `v1.5` still contains the same content under the old name.
 
@@ -76,7 +79,7 @@ Current version: **v1.6** (tag sequence `v1.0` → … → `v1.5` → `v1.6`). T
 | Content | Language | Why |
 |---|---|---|
 | README (this file), repo description, release notes | **English + Chinese** | So the repo is discoverable and understandable to an international reader before committing to anything |
-| Documents (01 / 02 / 03 / 04 / 05) | **Chinese first**; English translation per document, when there is demand | A faithful translation of a thousand-line design document is a second artifact to maintain forever. Translating everything up front means either both copies rot, or the translation becomes the reason not to update the original |
+| Documents (01 / 02 / 03 / 04 / 05 / 06) | **Chinese first**; English translation per document, when there is demand | A faithful translation of a thousand-line design document is a second artifact to maintain forever. Translating everything up front means either both copies rot, or the translation becomes the reason not to update the original |
 | Component READMEs | **English required** | A component's README is its user interface; it is short, and it is what a stranger reads first |
 
 **How a translation happens**: an English file is added as `XX-<name>.en.md` **next to** the Chinese original (never replacing it), linked from both READMEs, and the Chinese file remains the source of truth. If you need one of the design documents in English, **open an issue naming the document** — demand is itself the scheduling signal.
