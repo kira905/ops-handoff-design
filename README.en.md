@@ -75,7 +75,7 @@ This is probably relevant to you if:
 | **GitHub** (primary) | <https://github.com/kira905/ops-handoff-design> | International entry point |
 | **Gitee** (mirror) | <https://gitee.com/kira905/ops-handoff-design> | Directly reachable from mainland China |
 
-Current version: **v1.9** (tag sequence `v1.0` → … → `v1.8` → `v1.9`; `v1.8` = commit `8233ef4`, `v1.9` = the commit shown on either platform's tags page). The `v1.9` addition — documents `07` and `08` — is **published on both Gitee and GitHub**. **Next: `v1.10` (local draft, not yet tagged)** — adds `09-长会话的自动交接与接力.md` and refreshes `03` (new §3.8, house rules extended to **R1–R9**, top-level conclusions 5 → 7). The per-version changelog is maintained in the [Chinese README](README.md).
+Current version: **v1.10** (tag sequence `v1.0` → … → `v1.9` → `v1.10`; `v1.10` was **published on both Gitee and GitHub on 2026-09-22**). It adds `09-长会话的自动交接与接力.md` and refreshes `03` (new §3.8, house rules extended to **R1–R9**, top-level conclusions 5 → 7); the same batch also rewrote the version lines in documents `05` / `06`. The previous release, `v1.9`, added documents `07` and `08`. The per-version changelog is maintained in the [Chinese README](README.md).
 
 > **On the v1.6 file rename**: the three documents dropped the word "design" from their titles in this version. If you hold a link to an older filename, tag `v1.5` still contains the same content under the old name.
 
