@@ -1,5 +1,22 @@
 # Operating Long-Lived Coding Agents · An Operations Design Record
 
+> ### What this is
+> **An operations design record** (11 redacted documents): giving a long-running coding agent a supervisor that maintains itself.
+>
+> ### What it solves
+> One agent session doing one task is easy. Running it on the same machine for **months** is where the non-coding problems appear: what happens when context fills up, how to roll back a bad change, how to tell a genuinely finished task from a falsely finished one, how much autonomous action is acceptable, and how two machines hand work to each other. These 11 documents are the **judgment and the cost** at the time — not a tutorial, a record.
+>
+> ### How to read it (suggested order)
+> 1. [03 The system at a glance, and the house rules](03-体系全景与家规.md)
+> 2. [09 Automatic handoff and relay for long sessions](09-长会话的自动交接与接力.md) — the core of the whole thing
+> 3. [10 Detecting false completions and interrupted sessions](10-任务卡假完成与被打断会话的识别.md) — where it is easiest to fool yourself
+> 4. [05 One wrong performance attribution](05-一次错误的性能归因.md) — a real misdiagnosis, and how it was corrected
+>
+> ### The matching code
+> Every document maps to a repo: `dsh-butler-core` (scheduling and gates) · `dsh-firstaid` (incident console) · `dsh-session-toolkit` (handoff) · `dsh-quality-toolkit` (rule checks). See the pinned repos on the profile.
+
+---
+
 > **Give your coding agent a self-maintaining butler — what breaks, how to judge it, and how to roll it back**
 
 > **中文版** → [README.md](README.md)
